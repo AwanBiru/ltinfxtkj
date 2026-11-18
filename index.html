@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Soal Informatika - Kelas X TKJ | SMK Choiriyah Lumajang</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-dark: #115e59;
+            --primary-light: #ccfbf1;
+            --accent: #0284c7;
+            --bg-body: #f1f5f9;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success: #16a34a;
+            --success-bg: #dcfce7;
+            --danger: #dc2626;
+            --danger-bg: #fee2e2;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px -2px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .top-bar {
+            background: linear-gradient(135deg, #0f172a 0%, #0f766e 100%);
+            color: white;
+            padding: 1.5rem 1rem;
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-bar-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .school-info h1 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .school-info p {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+
+        .badge-header {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            flex: 1;
+        }
+
+        /* Welcome Card */
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .welcome-box {
+            max-width: 560px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .welcome-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .welcome-box h2 {
+            font-size: 1.65rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 0.35rem;
+        }
+
+        .welcome-subtitle {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .meta-pills {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.75rem;
+        }
+
+        .meta-pill {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 0.45rem 0.9rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+        }
+
+        .error-text {
+            color: var(--danger);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.4rem;
+            display: none;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.75rem;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        /* Progress Bar Sticky */
+        .progress-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .student-tag {
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 0.2rem 0.7rem;
+            border-radius: 999px;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Question Card */
+        .question-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            padding: 1.75rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .question-card.unanswered-highlight {
+            border: 2px solid var(--danger);
+            background: #fffafa;
+        }
+
+        .q-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .q-number {
+            background: var(--primary);
+            color: white;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 8px;
+        }
+
+        .q-topic {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .q-text {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1.25rem;
+            white-space: pre-line;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            padding: 0.9rem 1.1rem;
+            border: 1.5px solid var(--border-color);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            background: #ffffff;
+        }
+
+        .option-label:hover {
+            border-color: var(--primary);
+            background: #f8fafc;
+        }
+
+        .option-label input[type="radio"] {
+            display: none;
+        }
+
+        .option-key {
+            width: 30px;
+            height: 30px;
+            min-width: 30px;
+            border-radius: 8px;
+            background: #f1f5f9;
+            color: #475569;
+            font-weight: 800;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+        }
+
+        .option-text {
+            font-size: 0.95rem;
+            color: #1e293b;
+            padding-top: 0.15rem;
+        }
+
+        .option-label.selected {
+            border-color: var(--primary);
+            background: #f0fdfa;
+        }
+
+        .option-label.selected .option-key {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Result Section */
+        .score-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #115e59 100%);
+            color: white;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .score-banner .subtitle {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #99f6e4;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .score-banner h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .score-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+            border: 4px solid #2dd4bf;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .score-value {
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .score-max {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-top: 0.25rem;
+        }
+
+        .score-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            min-width: 120px;
+        }
+
+        .stat-box span {
+            display: block;
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+
+        .stat-box strong {
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        /* Review & Explanation Cards */
+        .review-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .review-card.is-correct {
+            border-left: 5px solid var(--success);
+        }
+
+        .review-card.is-wrong {
+            border-left: 5px solid var(--danger);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .status-correct {
+            background: var(--success-bg);
+            color: var(--success);
+        }
+
+        .status-wrong {
+            background: var(--danger-bg);
+            color: var(--danger);
+        }
+
+        .review-option {
+            padding: 0.65rem 0.9rem;
+            border-radius: 10px;
+            margin-bottom: 0.45rem;
+            font-size: 0.92rem;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+        }
+
+        .review-option.opt-correct {
+            background: var(--success-bg);
+            border-color: #86efac;
+            color: #14532d;
+            font-weight: 600;
+        }
+
+        .review-option.opt-user-wrong {
+            background: var(--danger-bg);
+            border-color: #fca5a5;
+            color: #7f1d1d;
+            font-weight: 600;
+        }
+
+        .explanation-box {
+            margin-top: 1rem;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 1rem 1.15rem;
+            font-size: 0.92rem;
+        }
+
+        .explanation-box strong {
+            color: var(--primary-dark);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            background: #ffffff;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .card, .question-card {
+                padding: 1.25rem;
+            }
+            .score-banner {
+                padding: 1.75rem 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="top-bar">
+        <div class="top-bar-inner">
+            <div class="school-info">
+                <h1>SMK CHOIRIYAH LUMAJANG</h1>
+                <p>Mata Pelajaran: Informatika • Kelas X TKJ</p>
+            </div>
+            <div class="badge-header">Latihan Soal Interaktif</div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- STEP 1: IDENTITAS PESERTA -->
+        <section id="start-screen" class="card welcome-box">
+            <div class="welcome-icon">💻</div>
+            <div class="welcome-subtitle">Latihan Soal Informatika</div>
+            <h2>Arsitektur Komputer & Pengelolaan Data</h2>
+            <p class="welcome-desc">
+                Kerjakan seluruh soal pilihan ganda berikut dengan teliti. Skor dan pembahasan lengkap akan ditampilkan secara otomatis setelah Anda selesai menjawab.
+            </p>
+
+            <div class="meta-pills">
+                <span class="meta-pill">📝 30 Pilihan Ganda</span>
+                <span class="meta-pill">⚡ Skor Otomatis</span>
+                <span class="meta-pill">📖 Pembahasan Lengkap</span>
+            </div>
+
+            <div class="form-group">
+                <label for="student-name">Nama Lengkap Siswa <span style="color: #dc2626;">*</span></label>
+                <input type="text" id="student-name" class="form-input" placeholder="Masukkan nama lengkap Anda..." autocomplete="off">
+                <div id="name-error" class="error-text">Silakan masukkan nama lengkap Anda sebelum memulai latihan soal.</div>
+            </div>
+
+            <button type="button" id="start-btn" class="btn btn-primary">
+                Mulai Mengerjakan Soal →
+            </button>
+        </section>
+
+        <!-- STEP 2: HALAMAN KUIS -->
+        <section id="quiz-screen" class="hidden">
+            <div class="progress-wrapper">
+                <div class="progress-header">
+                    <span>Peserta: <span id="display-name-header" class="student-tag">-</span></span>
+                    <span id="progress-text">Terjawab: 0 / 30 Soal</span>
+                </div>
+                <div class="progress-track">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div id="questions-container"></div>
+
+            <div class="card" style="text-align: center;">
+                <p style="color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1rem;">
+                    Pastikan seluruh 30 soal telah dijawab sebelum menekan tombol kirim di bawah ini.
+                </p>
+                <div id="submit-warning" class="error-text" style="margin-bottom: 1rem; font-size: 0.92rem;"></div>
+                <button type="button" id="submit-btn" class="btn btn-primary" style="max-width: 360px;">
+                    Selesai & Lihat Skor →
+                </button>
+            </div>
+        </section>
+
+        <!-- STEP 3: HASIL SKOR & PEMBAHASAN -->
+        <section id="result-screen" class="hidden">
+            <div class="score-banner">
+                <div class="subtitle">Hasil Latihan Soal Informatika</div>
+                <h2 id="result-student-name">Nama Peserta</h2>
+
+                <div class="score-circle">
+                    <span id="score-number" class="score-value">0</span>
+                    <span class="score-max">dari 100</span>
+                </div>
+
+                <div class="score-stats">
+                    <div class="stat-box">
+                        <span>Jawaban Benar</span>
+                        <strong id="stat-correct" style="color: #4ade80;">0</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span>Jawaban Salah</span>
+                        <strong id="stat-wrong" style="color: #f87171;">0</strong>
+                    </div>
+                    <div class="stat-box">
+                        <span>Predikat</span>
+                        <strong id="stat-grade">-</strong>
+                    </div>
+                </div>
+
+                <button type="button" id="retry-btn" class="btn btn-secondary">
+                    ↻ Ulangi Latihan Soal
+                </button>
+            </div>
+
+            <h3 class="review-title">📖 Kunci Jawaban & Pembahasan Lengkap</h3>
+            <div id="review-container"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        Latihan Soal Informatika Kelas X TKJ • SMK Choiriyah Lumajang • Berakhlak Berilmu Beramal
+    </footer>
+
+    <script>
+        const quizData = [
+            {
+                number: 1,
+                topic: "Arsitektur CPU",
+                question: "Komponen pada Central Processing Unit (CPU) yang bertanggung jawab mengatur lalu lintas instruksi, mengontrol jalannya program, serta mengoordinasikan seluruh unit operasional sistem komputer adalah...",
+                options: {
+                    A: "Arithmetic Logic Unit (ALU)",
+                    B: "Control Unit (CU)",
+                    C: "Memory Address Register (MAR)",
+                    D: "Secondary Storage",
+                    E: "Random Access Memory (RAM)"
+                },
+                answer: "B",
+                explanation: "Control Unit (CU) bertugas mengendalikan operasi CPU secara keseluruhan, mengatur aliran instruksi dan data, serta menyinkronkan kerja antar komponen komputer."
+            },
+            {
+                number: 2,
+                topic: "Memori Komputer",
+                question: "Memori utama komputer yang berfungsi menyimpan data dan instruksi sementara saat komputer aktif dan seluruh isinya akan hilang saat aliran daya listrik terputus (volatile) adalah...",
+                options: {
+                    A: "Read Only Memory (ROM)",
+                    B: "Solid State Drive (SSD)",
+                    C: "Random Access Memory (RAM)",
+                    D: "Flash Drive",
+                    E: "Hard Disk Drive (HDD)"
+                },
+                answer: "C",
+                explanation: "Random Access Memory (RAM) merupakan memori utama bersifat volatile, artinya data di dalamnya hanya bertahan selama mendapat suplai daya listrik dan akan terhapus ketika komputer dimatikan."
+            },
+            {
+                number: 3,
+                topic: "Pengelolaan Data",
+                question: "Kumpulan fakta mentah, angka, simbol, atau catatan kejadian yang belum diolah dan belum memiliki konteks atau makna fungsional bagi penggunanya disebut...",
+                options: {
+                    A: "Informasi",
+                    B: "Data",
+                    C: "Pengetahuan (Knowledge)",
+                    D: "Database",
+                    E: "Metadata"
+                },
+                answer: "B",
+                explanation: "Data adalah bahan mentah berupa fakta, angka, teks, atau simbol yang belum diproses sehingga belum memberikan makna langsung untuk pengambilan keputusan."
+            },
+            {
+                number: 4,
+                topic: "Validasi Data",
+                question: "Teknik validasi data pada formulir input yang memastikan bahwa nilai angka yang dimasukkan tidak melewati batas nilai minimum dan maksimum (misalnya nilai ujian harus berkisar antara 0 hingga 100) disebut...",
+                options: {
+                    A: "Presence Check",
+                    B: "Length Check",
+                    C: "Format Check",
+                    D: "Range Check",
+                    E: "Type Check"
+                },
+                answer: "D",
+                explanation: "Range Check (pemeriksaan rentang) digunakan untuk memvalidasi bahwa nilai numerik atau tanggal berada di antara batas minimum dan maksimum yang ditentukan."
+            },
+            {
+                number: 5,
+                topic: "Siklus Instruksi",
+                question: "Tahapan di dalam siklus instruksi dasar pemroses (instruction cycle) di mana CPU menerjemahkan kode biner instruksi menjadi sinyal kendali untuk dieksekusi adalah tahap...",
+                options: {
+                    A: "Fetch",
+                    B: "Decode",
+                    C: "Execute",
+                    D: "Store",
+                    E: "Writeback"
+                },
+                answer: "B",
+                explanation: "Pada tahap Decode, Control Unit menerjemahkan kode mesin (opcode dan operand) yang baru diambil dari memori menjadi sinyal kontrol bagi ALU maupun register."
+            },
+            {
+                number: 6,
+                topic: "Komponen Internal CPU",
+                question: "Kombinasi komponen internal utama yang berada di dalam chip Central Processing Unit (CPU) ditunjukkan oleh kelompok...",
+                options: {
+                    A: "ALU, Control Unit (CU), dan Register",
+                    B: "ALU, Power Supply Unit (PSU), dan Monitor",
+                    C: "Control Unit, Hard Disk Drive, dan Keyboard",
+                    D: "Register, Power Supply Unit, dan Motherboard",
+                    E: "Monitor Display, Mouse, dan Printer"
+                },
+                answer: "A",
+                explanation: "Komponen inti penyusun CPU terdiri atas Arithmetic Logic Unit (ALU), Control Unit (CU), dan Register. PSU, Monitor, dan HDD berada di luar chip CPU."
+            },
+            {
+                number: 7,
+                topic: "Arsitektur Von Neumann",
+                question: "Karakteristik fundamental dari prinsip arsitektur komputer model Von Neumann adalah...",
+                options: {
+                    A: "Memisahkan jalur memori data secara fisik dari memori instruksi",
+                    B: "Instruksi dan data disimpan bersama-sama di dalam memori utama yang sama serta dieksekusi secara sekuensial",
+                    C: "Tidak memerlukan media penyimpanan sementara maupun register",
+                    D: "Hanya mampu memproses instruksi grafis tanpa unit aritmetika",
+                    E: "Menjalankan seluruh instruksi tanpa memerlukan sinyal clock"
+                },
+                answer: "B",
+                explanation: "Ciri utama arsitektur Von Neumann adalah konsep stored-program di mana data dan instruksi berbagi ruang memori utama yang sama serta dijalankan berurutan (sekuensial) melalui bus tunggal."
+            },
+            {
+                number: 8,
+                topic: "Kualitas Informasi",
+                question: "Informasi yang berkualitas tinggi untuk mendukung pengambilan keputusan harus memenuhi empat pilar kriteria utama, yaitu...",
+                options: {
+                    A: "Akurat, Tepat Waktu, Relevan, dan Lengkap",
+                    B: "Panjang, Berwarna, Mahal, dan Terenkripsi",
+                    C: "Acak, Duplikat, Mentah, dan Tidak Terstruktur",
+                    D: "Minimal 10.000 kata, Sulit Dipahami, dan Rahasia",
+                    E: "Cepat, Tanpa Sumber, Tersirat, dan Subjektif"
+                },
+                answer: "A",
+                explanation: "Empat kriteria utama informasi berkualitas adalah Akurat (bebas kesalahan), Tepat Waktu (tersedia saat dibutuhkan), Relevan (sesuai kebutuhan pengguna), dan Lengkap (mencakup fakta esensial)."
+            },
+            {
+                number: 9,
+                topic: "Validasi Formulir Digital",
+                question: "Manakah di bawah ini yang BUKAN merupakan metode validasi data pada formulir pengisian data digital?",
+                options: {
+                    A: "Type Check (memastikan tipe data numerik atau teks sesuai)",
+                    B: "Format Check (memastikan susunan karakter memenuhi pola tertentu)",
+                    C: "Presence Check (memastikan kolom wajib diisi dan tidak kosong)",
+                    D: "Length Check (memastikan jumlah karakter sesuai standar)",
+                    E: "Overclocking Check (menaikkan frekuensi bus data)"
+                },
+                answer: "E",
+                explanation: "Type Check, Format Check, Presence Check, dan Length Check adalah teknik validasi input. Overclocking bukan mekanisme validasi data, melainkan pengaturan kecepatan clock perangkat keras."
+            },
+            {
+                number: 10,
+                topic: "Konsep GIGO",
+                question: "Konsep 'Garbage In, Garbage Out' (GIGO) dalam ilmu informatika memiliki implikasi nyata bahwa...",
+                options: {
+                    A: "Sistem komputer secara otomatis dapat memperbaiki seluruh kesalahan input tanpa filter",
+                    B: "Jika data mentah yang dimasukkan tidak valid atau salah, maka informasi keluaran yang dihasilkan juga akan keliru",
+                    C: "Kualitas output tidak dipengaruhi oleh kebersihan data masukan",
+                    D: "Validasi input hanya memperlambat kinerja aplikasi tanpa manfaat",
+                    E: "Keputusan manajerial selalu benar meskipun menggunakan data rusak"
+                },
+                answer: "B",
+                explanation: "GIGO menegaskan bahwa komputer hanya memproses apa yang dimasukkan; input yang salah atau kotor pasti menghasilkan output yang salah pula, sehingga validasi input sangat krusial."
+            },
+            {
+                number: 11,
+                topic: "Fungsi Komponen CPU & Memori",
+                question: "Pasangan fungsi yang PALING TEPAT antara komponen memori/CPU dengan perannya adalah...",
+                options: {
+                    A: "ALU bertugas menyimpan BIOS permanen pabrikan",
+                    B: "Cache Memory merupakan memori berkecepatan paling rendah di luar motherboard",
+                    C: "Register Internal adalah memori berkecepatan paling tinggi di dalam inti pemroses, sedangkan Cache Memory menjadi penyangga cepat antara CPU dan RAM",
+                    D: "Read Only Memory (ROM) mengatur urutan eksekusi instruksi dan sinyal kontrol",
+                    E: "Control Unit (CU) bertugas melakukan perhitungan matematika dan logika"
+                },
+                answer: "C",
+                explanation: "Register berada langsung di dalam inti CPU dengan akses tercepat; Cache Memory menjembatani kecepatan CPU dan RAM; ALU menghitung logika/aritmetika; CU mengatur kontrol; dan ROM menyimpan firmware/BIOS."
+            },
+            {
+                number: 12,
+                topic: "Klasifikasi Perangkat Keras",
+                question: "Berdasarkan klasifikasi sistem arsitektur komputer, pengelompokan perangkat keras yang benar adalah...",
+                options: {
+                    A: "Barcode Scanner (Input), LCD Monitor (Output), NVMe M.2 SSD (Secondary Storage)",
+                    B: "Barcode Scanner (Output), LCD Monitor (Input), Motherboard (Storage)",
+                    C: "NVMe M.2 SSD (Processing Unit), CPU (Input Device), LCD Monitor (Mainboard)",
+                    D: "Motherboard (Output Device), Barcode Scanner (Storage), CPU (Peripheral)",
+                    E: "LCD Monitor (Storage), NVMe M.2 SSD (Input), Barcode Scanner (Output)"
+                },
+                answer: "A",
+                explanation: "Barcode Scanner memasukkan data kode batang (Input), LCD Monitor menampilkan visual (Output), dan NVMe M.2 SSD menyimpan data secara permanen (Secondary Storage)."
+            },
+            {
+                number: 13,
+                topic: "Lintasan Bus Sistem",
+                question: "Pernyataan yang paling tepat mengenai fungsi lintasan bus sistem komputer adalah...",
+                options: {
+                    A: "Address Bus membawa data nyata dua arah (bi-directional)",
+                    B: "Data Bus menentukan alamat memori target transfer data secara searah",
+                    C: "Data Bus membawa data nyata antar komponen secara dua arah (bi-directional), sedangkan Address Bus menentukan alamat memori atau port I/O target",
+                    D: "Control Bus menyalurkan daya listrik DC ke seluruh rangkaian",
+                    E: "System Clock mengirimkan data teks dari keyboard ke monitor"
+                },
+                answer: "C",
+                explanation: "Data Bus bersifat dua arah untuk transfer data aktual; Address Bus menentukan lokasi alamat memori/port; Control Bus membawa sinyal kendali (read/write, interrupt); dan System Clock menyinkronkan detak pulsa kerja CPU."
+            },
+            {
+                number: 14,
+                topic: "Implementasi Validasi Data",
+                question: "Contoh penerapan metode validasi data yang paling sesuai pada formulir aplikasi adalah...",
+                options: {
+                    A: "Range Check: kolom nama lengkap tidak boleh kosong",
+                    B: "Presence Check: alamat email wajib mengandung simbol '@' dan domain",
+                    C: "Format Check: alamat email wajib mengandung simbol '@' dan domain, sedangkan Length Check mewajibkan password minimal 8 karakter",
+                    D: "Length Check: nilai IPK harus berkisar antara 0.00 hingga 4.00",
+                    E: "Type Check: password wajib terdiri dari minimal 8 karakter"
+                },
+                answer: "C",
+                explanation: "Format Check memeriksa pola karakter tertentu (seperti simbol '@' pada email), sedangkan Length Check memeriksa jumlah panjang karakter (misalnya password minimal 8 karakter)."
+            },
+            {
+                number: 15,
+                topic: "Istilah Pengelolaan Data",
+                question: "Definisi yang benar mengenai istilah pengelolaan data dan informasi adalah...",
+                options: {
+                    A: "Data Redundancy adalah proses memperbaiki atau menghapus data yang korup",
+                    B: "Data Cleansing adalah terjadinya duplikasi data yang sama pada beberapa tempat penyimpanan",
+                    C: "Integritas Data adalah konsistensi, kelengkapan, dan akurasi data sepanjang daur hidupnya, sedangkan Data Cleansing adalah proses mendeteksi dan memperbaiki data yang korup/salah",
+                    D: "Raw Data adalah data yang telah diolah untuk pengambilan keputusan",
+                    E: "Informasi adalah fakta mentah yang belum dikontekstualisasikan"
+                },
+                answer: "C",
+                explanation: "Integritas data menjaga akurasi dan konsistensi data; Data Cleansing membersihkan data korup/tidak valid; Data Redundancy adalah duplikasi data; dan Raw Data adalah fakta mentah."
+            },
+            {
+                number: 16,
+                topic: "Bus Sistem Komputer",
+                question: "Tiga jalur utama pada bus sistem (System Bus) yang menghubungkan CPU dengan memori utama dan perangkat I/O dalam arsitektur komputer adalah...",
+                options: {
+                    A: "USB Bus, HDMI Bus, dan SATA Bus",
+                    B: "Data Bus, Address Bus, dan Control Bus",
+                    C: "Northbridge, Southbridge, dan PCIe",
+                    D: "ALU Bus, Cache Bus, dan Register Bus",
+                    E: "LAN Bus, WAN Bus, dan Fiber Bus"
+                },
+                answer: "B",
+                explanation: "System Bus internal dalam arsitektur komputer terbagi menjadi tiga jalur utama: Data Bus (jalur data), Address Bus (jalur alamat memori/I/O), dan Control Bus (jalur sinyal kontrol)."
+            },
+            {
+                number: 17,
+                topic: "Register CPU",
+                question: "Fungsi spesifik dari register Program Counter (PC) pada arsitektur Central Processing Unit adalah...",
+                options: {
+                    A: "Menyimpan hasil akhir perhitungan aritmetika dan logika dari ALU",
+                    B: "Menyimpan alamat memori dari instruksi berikutnya yang akan diambil (fetch) dan dieksekusi oleh CPU",
+                    C: "Menghitung jumlah total perangkat keras yang terpasang pada motherboard",
+                    D: "Mengatur suhu kerja prosesor agar tidak mengalami overheating",
+                    E: "Menyimpan seluruh file sistem operasi saat komputer dimatikan"
+                },
+                answer: "B",
+                explanation: "Program Counter (PC) adalah register khusus di dalam CPU yang selalu menunjuk pada alamat memori instruksi selanjutnya yang akan dieksekusi."
+            },
+            {
+                number: 18,
+                topic: "Karakteristik Memori",
+                question: "Maksud dari sifat memori 'volatile' beserta contoh komponennya yang tepat adalah...",
+                options: {
+                    A: "Data tetap tersimpan permanen meski listrik mati; contohnya SSD",
+                    B: "Data hanya tersimpan sementara selama ada aliran daya listrik dan akan hilang saat daya terputus; contohnya RAM",
+                    C: "Memori hanya dapat dibaca sekali oleh pabrik; contohnya ROM",
+                    D: "Memori berbasis piringan magnetik berputar; contohnya HDD",
+                    E: "Memori khusus penyimpanan cadangan cloud; contohnya Google Drive"
+                },
+                answer: "B",
+                explanation: "Memori volatile membutuhkan pasokan daya listrik terus-menerus untuk mempertahankan isi datanya. Contoh utamanya adalah RAM dan Cache Memory."
+            },
+            {
+                number: 19,
+                topic: "Penerapan Length Check",
+                question: "Manakah contoh penerapan teknik validasi 'Length Check' yang tepat pada formulir pendaftaran akun daring?",
+                options: {
+                    A: "Memastikan kolom usia hanya diisi angka bulat",
+                    B: "Memastikan kolom email tidak dibiarkan kosong",
+                    C: "Memastikan kata sandi (password) terdiri dari minimal 8 karakter dan maksimal 20 karakter, atau NISN tepat 10 digit",
+                    D: "Memastikan tanggal lahir tidak melebihi tahun berjalan",
+                    E: "Memastikan kode pos sesuai dengan nama provinsi"
+                },
+                answer: "C",
+                explanation: "Length Check membatasi jumlah karakter minimal, maksimal, atau panjang pasti (seperti NISN tepat 10 karakter atau password minimal 8 karakter)."
+            },
+            {
+                number: 20,
+                topic: "Prinsip GIGO",
+                question: "Makna utama dari prinsip 'Garbage In, Garbage Out' (GIGO) dalam pemrosesan data komputer adalah...",
+                options: {
+                    A: "Komputer memiliki fitur Recycle Bin untuk memulihkan file yang terhapus",
+                    B: "Kualitas hasil keluaran (output) sepenuhnya bergantung pada kualitas data masukan (input); jika input salah, output pasti salah",
+                    C: "Perangkat keras bekas tetap dapat menghasilkan performa maksimal",
+                    D: "Program komputer dapat berjalan tanpa memerlukan data masukan",
+                    E: "Setiap data sampah otomatis dikompresi oleh prosesor"
+                },
+                answer: "B",
+                explanation: "GIGO berarti logika pemrosesan yang canggih sekalipun tetap akan menghasilkan keluaran yang keliru jika diberi data masukan yang tidak akurat."
+            },
+            {
+                number: 21,
+                topic: "Alur Siklus Instruksi",
+                question: "Urutan kerja yang benar dalam satu siklus instruksi pemroses (Instruction Cycle) pada arsitektur CPU adalah...",
+                options: {
+                    A: "Execute → Fetch → Decode",
+                    B: "Decode → Execute → Fetch",
+                    C: "Fetch (mengambil instruksi dari memori utama via PC/MAR) → Decode (CU menerjemahkan instruksi) → Execute (ALU/register menjalankan operasi dan menyimpan hasil)",
+                    D: "Fetch → Store ke HDD → Shutdown",
+                    E: "Execute → Hapus Register → Decode"
+                },
+                answer: "C",
+                explanation: "Siklus instruksi berjalan berurutan: Fetch (mengambil instruksi dari alamat yang ditunjuk Program Counter ke IR), Decode (CU menerjemahkan kode instruksi), dan Execute (ALU atau unit terkait mengeksekusi perintah)."
+            },
+            {
+                number: 22,
+                topic: "Von Neumann vs Harvard",
+                question: "Perbedaan mendasar antara arsitektur komputer model Von Neumann dengan arsitektur Harvard terletak pada...",
+                options: {
+                    A: "Von Neumann tidak memiliki ALU, sedangkan Harvard memiliki dua ALU",
+                    B: "Von Neumann menggunakan satu memori dan jalur bus bersama untuk instruksi serta data (rentan bottleneck), sedangkan Harvard memisahkan memori dan jalur bus untuk instruksi dan data secara fisik",
+                    C: "Harvard hanya digunakan pada superkomputer, sedangkan Von Neumann hanya pada kalkulator",
+                    D: "Von Neumann memisahkan jalur data dan instruksi, sedangkan Harvard menggabungkannya",
+                    E: "Harvard tidak membutuhkan memori utama sama sekali"
+                },
+                answer: "B",
+                explanation: "Arsitektur Harvard memisahkan jalur bus dan memori antara instruksi dan data sehingga pengambilan keduanya dapat dilakukan paralel (lebih cepat), sedangkan Von Neumann menggabungkannya dalam satu ruang memori (desain lebih sederhana dan ekonomis)."
+            },
+            {
+                number: 23,
+                topic: "Hierarki Memori",
+                question: "Alasan utama hierarki memori komputer disusun secara bertingkat dari Register, Cache L1/L2/L3, RAM, hingga Secondary Storage adalah...",
+                options: {
+                    A: "Agar ukuran fisik casing komputer terlihat lebih besar",
+                    B: "Menyeimbangkan trade-off antara kecepatan akses, kapasitas simpan, dan biaya produksi—semakin cepat akses memori, semakin mahal biaya per bit dan semakin kecil kapasitasnya",
+                    C: "Karena RAM tidak mampu berkomunikasi langsung dengan motherboard",
+                    D: "Agar seluruh data dapat disimpan permanen di dalam Register",
+                    E: "Mempercepat aliran listrik dari PSU menuju monitor"
+                },
+                answer: "B",
+                explanation: "Memori tercepat seperti Register dan Cache sangat mahal per byte sehingga kapasitasnya kecil. Hierarki memori mengoptimalkan performa dengan menempatkan data aktif di memori cepat dan data besar di penyimpanan sekunder yang lebih murah."
+            },
+            {
+                number: 24,
+                topic: "Mekanisme Transfer Data I/O",
+                question: "Dalam komunikasi antara CPU dan perangkat I/O, perbedaan utama metode Polling dan Interrupt-Driven I/O adalah...",
+                options: {
+                    A: "Pada Polling, CPU terus-menerus memeriksa status perangkat I/O secara berkala (membuang siklus CPU), sedangkan pada Interrupt-Driven I/O, perangkat mengirimkan sinyal interupsi ke CPU hanya ketika siap dilayani",
+                    B: "Polling jauh lebih hemat daya dibandingkan Interrupt-Driven I/O",
+                    C: "Interrupt-Driven I/O memaksa CPU berhenti total menunggu pengguna mengetik",
+                    D: "Polling hanya berlaku pada jaringan nirkabel, sedangkan Interrupt pada kabel LAN",
+                    E: "Keduanya tidak melibatkan Control Bus maupun Register"
+                },
+                answer: "A",
+                explanation: "Polling membuat CPU sibuk menanyakan status perangkat secara berulang (busy-waiting). Sebaliknya, Interrupt-Driven I/O jauh lebih efisien karena CPU dapat mengerjakan tugas lain hingga perangkat mengirim sinyal interrupt."
+            },
+            {
+                number: 25,
+                topic: "Transformasi Data ke Pengetahuan",
+                question: "Manakah contoh alur transformasi dari Data → Informasi → Pengetahuan (Knowledge) yang paling tepat di lingkungan sekolah?",
+                options: {
+                    A: "Keputusan remedial siswa (Data) → Rekap rata-rata nilai kelas (Informasi) → Angka nilai mentah ujian harian (Pengetahuan)",
+                    B: "Angka nilai mentah ujian tiap siswa: 65, 70, 88 (Data) → Rekap rata-rata nilai kelas X TKJ sebesar 74,3 dengan 30% di bawah KKM (Informasi) → Keputusan guru mengadakan kelas pengayaan pada materi jaringan dasar (Pengetahuan)",
+                    C: "Daftar hadir kosong (Data) → Kartu pelajar siswa (Informasi) → Jadwal piket kebersihan (Pengetahuan)",
+                    D: "Spesifikasi PC lab (Data) → Harga kabel UTP (Informasi) → Nomor telepon sekolah (Pengetahuan)",
+                    E: "Nama lengkap siswa (Data) → Alamat rumah siswa (Informasi) → Tanggal lahir siswa (Pengetahuan)"
+                },
+                answer: "B",
+                explanation: "Data berupa kumpulan nilai mentah individu; ketika diolah menjadi statistik rata-rata dan persentase ketuntasan menjadi Informasi; dan ketika dianalisis untuk mengambil kebijakan pembelajaran berubah menjadi Pengetahuan."
+            },
+            {
+                number: 26,
+                topic: "Analisis Kegagalan Kualitas Informasi",
+                question: "Jika sebuah laporan stok komponen laboratorium TKJ baru diserahkan seminggu setelah kegiatan praktikum selesai dilaksanakan, maka pilar kualitas informasi yang gagal terpenuhi adalah...",
+                options: {
+                    A: "Akurasi (Accuracy)",
+                    B: "Ketepatan Waktu (Timeliness)",
+                    C: "Kelengkapan (Completeness)",
+                    D: "Redundansi (Redundancy)",
+                    E: "Enkripsi (Encryption)"
+                },
+                answer: "B",
+                explanation: "Informasi yang terlambat diterima (melewati momen pengambilan keputusan) kehilangan nilai gunanya karena gagal memenuhi kriteria Ketepatan Waktu (Timeliness)."
+            },
+            {
+                number: 27,
+                topic: "Penyebab & Mitigasi Data Tidak Valid",
+                question: "Strategi mitigasi yang paling efektif untuk mencegah masuknya data tidak valid akibat kesalahan ketik operator (human error) saat input formulir adalah...",
+                options: {
+                    A: "Menghapus seluruh database setiap akhir pekan",
+                    B: "Menerapkan validasi input otomatis (input masking, dropdown pilihan, constraint database) serta mekanisme double-entry verification",
+                    C: "Menonaktifkan koneksi internet pada komputer server",
+                    D: "Meningkatkan kapasitas kartu grafis (GPU) pada komputer admin",
+                    E: "Membiarkan semua kolom formulir bertipe teks bebas tanpa batasan"
+                },
+                answer: "B",
+                explanation: "Human error saat penginputan dapat ditekan dengan membatasi pilihan menggunakan dropdown, validasi format/rentang secara real-time, dan pemeriksaan ganda sebelum data disimpan."
+            },
+            {
+                number: 28,
+                topic: "Validasi vs Verifikasi Data",
+                question: "Perbedaan mendasar antara konsep 'Validasi Data' dan 'Verifikasi Data' saat pengguna mendaftar layanan internet adalah...",
+                options: {
+                    A: "Validasi memastikan format/aturan data masuk akal oleh sistem (misal format email memakai '@'), sedangkan Verifikasi memastikan kebenaran faktual data sesuai kenyataan (misal pengguna mengklik tautan aktivasi di kotak masuk email tersebut)",
+                    B: "Validasi dilakukan oleh manusia secara manual, sedangkan Verifikasi hanya dilakukan oleh kartu jaringan",
+                    C: "Validasi memeriksa kecepatan internet, sedangkan Verifikasi menghitung tagihan bulanan",
+                    D: "Keduanya memiliki arti yang identik tanpa perbedaan fungsi",
+                    E: "Verifikasi dilakukan sebelum pengguna mengetikkan data apa pun"
+                },
+                answer: "A",
+                explanation: "Validasi mengecek apakah data mematuhi aturan sistem (masuk akal secara teknis), sedangkan Verifikasi membuktikan bahwa data tersebut benar-benar valid/sah di dunia nyata (seperti OTP WhatsApp atau link konfirmasi email)."
+            },
+            {
+                number: 29,
+                topic: "Perancangan Aturan Validasi Formulir",
+                question: "Dalam merancang aturan validasi formulir digital Penerimaan Peserta Didik Baru (PPDB) SMK, kombinasi aturan validasi yang paling tepat adalah...",
+                options: {
+                    A: "NISN: Presence Check; Nama Lengkap: Range Check; Email: Type Check angka",
+                    B: "NISN: Type Check (numerik) & Length Check (tepat 10 digit); Nama Lengkap: Presence Check; Nomor WhatsApp: Format Check (diawali 08/+62) & Length Check; Email: Format Check (pola user@domain)",
+                    C: "Semua kolom cukup diberikan Presence Check tanpa pemeriksaan format maupun panjang karakter",
+                    D: "Tanggal Lahir: Length Check minimal 50 karakter; NISN: Format Check mengandung huruf kapital",
+                    E: "Nomor WhatsApp: Range Check antara 1 sampai 100"
+                },
+                answer: "B",
+                explanation: "Setiap field memiliki karakteristik khusus: NISN wajib 10 digit angka (Type + Length Check), Nama wajib diisi (Presence Check), Nomor WA dan Email harus mengikuti pola penulisan standar (Format Check)."
+            },
+            {
+                number: 30,
+                topic: "Validasi Konfigurasi Jaringan (TKJ)",
+                question: "Sebagai teknisi jaringan (TKJ), konsekuensi teknis yang terjadi apabila terjadi kesalahan input Subnet Mask atau Default Gateway (misalnya gateway berada di luar segmen subnet IP host) adalah...",
+                options: {
+                    A: "Komputer akan otomatis menggandakan kecepatan bandwidth internet menjadi dua kali lipat",
+                    B: "Perangkat gagal melakukan routing keluar jaringan lokal (tidak dapat mengakses internet maupun segmen jaringan berbeda) meskipun koneksi fisik kabel LAN terhubung",
+                    C: "Monitor komputer langsung mati total karena kekurangan daya",
+                    D: "Kapasitas penyimpanan SSD berkurang secara permanen",
+                    E: "Alamat MAC Address kartu jaringan terhapus dari pabrik"
+                },
+                answer: "B",
+                explanation: "Default Gateway berfungsi sebagai pintu gerbang lalu lintas paket data keluar dari jaringan lokal (LAN). Jika IP Gateway salah atau tidak satu subnet dengan IP Host, perangkat tidak dapat berkomunikasi dengan jaringan luar/internet."
+            }
+        ];
+
+        // DOM Elements
+        const startScreen = document.getElementById("start-screen");
+        const quizScreen = document.getElementById("quiz-screen");
+        const resultScreen = document.getElementById("result-screen");
+
+        const studentNameInput = document.getElementById("student-name");
+        const nameError = document.getElementById("name-error");
+        const startBtn = document.getElementById("start-btn");
+
+        const displayNameHeader = document.getElementById("display-name-header");
+        const progressText = document.getElementById("progress-text");
+        const progressFill = document.getElementById("progress-fill");
+        const questionsContainer = document.getElementById("questions-container");
+        const submitBtn = document.getElementById("submit-btn");
+        const submitWarning = document.getElementById("submit-warning");
+
+        const resultStudentName = document.getElementById("result-student-name");
+        const scoreNumber = document.getElementById("score-number");
+        const statCorrect = document.getElementById("stat-correct");
+        const statWrong = document.getElementById("stat-wrong");
+        const statGrade = document.getElementById("stat-grade");
+        const reviewContainer = document.getElementById("review-container");
+        const retryBtn = document.getElementById("retry-btn");
+
+        let studentName = "";
+        let userAnswers = {};
+
+        // Start Quiz
+        startBtn.addEventListener("click", () => {
+            const val = studentNameInput.value.trim();
+            if (!val) {
+                nameError.style.display = "block";
+                studentNameInput.focus();
+                return;
+            }
+            nameError.style.display = "none";
+            studentName = val;
+            displayNameHeader.textContent = studentName;
+
+            renderQuestions();
+            startScreen.classList.add("hidden");
+            quizScreen.classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        studentNameInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                startBtn.click();
+            }
+        });
+
+        // Render All Questions
+        function renderQuestions() {
+            questionsContainer.innerHTML = "";
+            userAnswers = {};
+            updateProgress();
+
+            quizData.forEach((item, index) => {
+                const card = document.createElement("div");
+                card.className = "question-card";
+                card.id = `q-card-${item.number}`;
+
+                let optionsHtml = "";
+                for (const [key, text] of Object.entries(item.options)) {
+                    optionsHtml += `
+                        <label class="option-label" id="opt-${item.number}-${key}">
+                            <input type="radio" name="question-${item.number}" value="${key}" onchange="selectOption(${item.number}, '${key}')">
+                            <span class="option-key">${key}</span>
+                            <span class="option-text">${text}</span>
+                        </label>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="q-header">
+                        <span class="q-number">Soal ${item.number}</span>
+                        <span class="q-topic">${item.topic}</span>
+                    </div>
+                    <div class="q-text">${item.question}</div>
+                    <div class="options-list">${optionsHtml}</div>
+                `;
+
+                questionsContainer.appendChild(card);
+            });
+        }
+
+        // Handle Option Selection
+        window.selectOption = function(questionNumber, optionKey) {
+            userAnswers[questionNumber] = optionKey;
+
+            const card = document.getElementById(`q-card-${questionNumber}`);
+            card.classList.remove("unanswered-highlight");
+
+            const labels = card.querySelectorAll(".option-label");
+            labels.forEach(lbl => lbl.classList.remove("selected"));
+
+            const selectedLabel = document.getElementById(`opt-${questionNumber}-${optionKey}`);
+            if (selectedLabel) {
+                selectedLabel.classList.add("selected");
+            }
+
+            updateProgress();
+        };
+
+        // Update Progress Bar
+        function updateProgress() {
+            const answeredCount = Object.keys(userAnswers).length;
+            const total = quizData.length;
+            const percentage = Math.round((answeredCount / total) * 100);
+
+            progressText.textContent = `Terjawab: ${answeredCount} / ${total} Soal`;
+            progressFill.style.width = `${percentage}%`;
+        }
+
+        // Submit & Calculate Score
+        submitBtn.addEventListener("click", () => {
+            const unanswered = quizData.filter(q => !userAnswers[q.number]);
+
+            if (unanswered.length > 0) {
+                submitWarning.style.display = "block";
+                submitWarning.textContent = `Masih ada ${unanswered.length} soal yang belum dijawab (Nomor: ${unanswered.map(u => u.number).join(", ")}). Silakan lengkapi terlebih dahulu.`;
+
+                unanswered.forEach(u => {
+                    document.getElementById(`q-card-${u.number}`).classList.add("unanswered-highlight");
+                });
+
+                const firstMissing = document.getElementById(`q-card-${unanswered[0].number}`);
+                firstMissing.scrollIntoView({ behavior: "smooth", block: "center" });
+                return;
+            }
+
+            submitWarning.style.display = "none";
+            showResults();
+        });
+
+        // Display Results & Explanations
+        function showResults() {
+            let correctCount = 0;
+            reviewContainer.innerHTML = "";
+
+            quizData.forEach(item => {
+                const chosen = userAnswers[item.number];
+                const isCorrect = chosen === item.answer;
+                if (isCorrect) correctCount++;
+
+                const reviewCard = document.createElement("div");
+                reviewCard.className = `review-card ${isCorrect ? "is-correct" : "is-wrong"}`;
+
+                let optionsReviewHtml = "";
+                for (const [key, text] of Object.entries(item.options)) {
+                    let cls = "review-option";
+                    let tag = "";
+                    if (key === item.answer) {
+                        cls += " opt-correct";
+                        tag = " ✓ (Kunci Jawaban)";
+                    } else if (key === chosen && !isCorrect) {
+                        cls += " opt-user-wrong";
+                        tag = " ✕ (Jawaban Anda)";
+                    }
+
+                    optionsReviewHtml += `
+                        <div class="${cls}">
+                            <strong>${key}.</strong>
+                            <span>${text}${tag}</span>
+                        </div>
+                    `;
+                }
+
+                reviewCard.innerHTML = `
+                    <div class="q-header" style="justify-content: space-between; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 0.65rem;">
+                            <span class="q-number">Soal ${item.number}</span>
+                            <span class="q-topic">${item.topic}</span>
+                        </div>
+                        <span class="status-badge ${isCorrect ? "status-correct" : "status-wrong"}">
+                            ${isCorrect ? "✓ Benar" : "✕ Salah"}
+                        </span>
+                    </div>
+                    <div class="q-text" style="margin-bottom: 1rem;">${item.question}</div>
+                    <div style="margin-bottom: 0.75rem;">${optionsReviewHtml}</div>
+                    <div class="explanation-box">
+                        <strong>💡 Pembahasan:</strong>
+                        <span>${item.explanation}</span>
+                    </div>
+                `;
+
+                reviewContainer.appendChild(reviewCard);
+            });
+
+            const total = quizData.length;
+            const wrongCount = total - correctCount;
+            const finalScore = Math.round((correctCount / total) * 100);
+
+            let grade = "Perlu Belajar Lagi";
+            if (finalScore >= 90) grade = "Sangat Baik (A)";
+            else if (finalScore >= 80) grade = "Baik (B)";
+            else if (finalScore >= 70) grade = "Cukup (C)";
+            else if (finalScore >= 60) grade = "Kurang (D)";
+
+            resultStudentName.textContent = studentName;
+            scoreNumber.textContent = finalScore;
+            statCorrect.textContent = `${correctCount} Soal`;
+            statWrong.textContent = `${wrongCount} Soal`;
+            statGrade.textContent = grade;
+
+            quizScreen.classList.add("hidden");
+            resultScreen.classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        // Retry Quiz
+        retryBtn.addEventListener("click", () => {
+            resultScreen.classList.add("hidden");
+            startScreen.classList.remove("hidden");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+</body>
+</html>
